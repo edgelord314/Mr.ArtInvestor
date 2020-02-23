@@ -10,7 +10,7 @@ import de.edgelord.saltyengine.utils.ColorUtil;
 public class Main extends Game {
 
     public static void main(String[] args) {
-        init(GameConfig.config(1920, 1080, "Mr. ArtInvestor", 10));
+        init(GameConfig.config(1920, 1080, "Mr. ArtInvestor", 5));
         start(30);
 
         setDrawFPS(false);

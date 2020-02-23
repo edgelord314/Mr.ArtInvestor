@@ -15,12 +15,17 @@ public class ArtPiece implements Drawable {
     public static final List<Integer> PIXEL_SIZES = new ArrayList<>();
 
     public static final int WIDTH = 1000;
-    public static final int HEIGHT = 750;
+    public static final int HEIGHT = 600;
 
+    private List<Color> colors = new ArrayList<>();
     private int pixelSize;
 
     public ArtPiece() {
         pixelSize = (int) GeneralUtil.randomObjectFromList(PIXEL_SIZES);
+
+        for (int i = 0; i < 7; i++) {
+            colors.add((Color) GeneralUtil.randomObjectFromList(PALETTE));
+        }
     }
 
     @Override
@@ -36,10 +41,10 @@ public class ArtPiece implements Drawable {
 
         while (y <= HEIGHT) {
 
-            nextColor = (Color) GeneralUtil.randomObjectFromList(PALETTE);
+            nextColor = (Color) GeneralUtil.randomObjectFromList(colors);
 
-            for (int i = 0; i < 6 && nextColor != lastColor; i++) {
-                nextColor = (Color) GeneralUtil.randomObjectFromList(PALETTE);
+            for (int i = 0; i < 4 && nextColor != lastColor; i++) {
+                nextColor = (Color) GeneralUtil.randomObjectFromList(colors);
             }
 
             saltyGraphics.setColor(nextColor);
@@ -57,11 +62,14 @@ public class ArtPiece implements Drawable {
     }
 
     static {
+        PIXEL_SIZES.add(8);
         PIXEL_SIZES.add(10);
         PIXEL_SIZES.add(20);
+        PIXEL_SIZES.add(25);
+        PIXEL_SIZES.add(40);
         PIXEL_SIZES.add(50);
-        PIXEL_SIZES.add(125);
-        PIXEL_SIZES.add(250);
+        PIXEL_SIZES.add(100);
+        PIXEL_SIZES.add(200);
     }
 
     static {
